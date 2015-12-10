@@ -32,6 +32,9 @@ by Bryan Baek, Walker Evans, Takehiro Matsuzawa
 
     -for weekly prediction/comparison
 
+4. Extra Python Library
+  a. holidays 4.0
+
 
 Website: http://cs109johncena.github.io/Seatgeek/
 
