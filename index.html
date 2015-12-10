@@ -153,6 +153,23 @@ We then validated the Best Predictive Model on the Validation Set to Determine U
 </tbody>
 </table>
 
+<h3>
+<a id="analysis" class="anchor" href="#analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Analysis</h3>
+
+<p>Lasso regression with intuitive explanatory variables proved to be best predicting today's ticket price with today's given information. We wanted to take this model one step further. By changing the "Days Away" variable, we could predict how the ticket price will change if the game is X days away. </p>
+
+<p>First, we modeled 15 random games:
+<img src="https://7c0a817f-a-ed83d6ea-s-sites.googlegroups.com/a/college.harvard.edu/seatgeekcs109/performance/download.png?attachauth=ANoY7cowo0XCIgL22VjpBH3_sJt-fMmo7RTRsXOcaDpu7HW5D8kjgbhwxWxnkWm3MVW9q67eFLgNuhyPQg5lIuxrT4-RIeFYML3CM2RLynqfZnqB4hX5e8hs17xw9TiMZWkAzvARNbRJriKOIx76fUE_0OR2phUCiN5V7hyhC47o2TdtH7m3P6LcXtOk-YJIfcNe7rMmThMYE2GHS_BKjQ7G6rX-Kg6vaqEretcRWD5LsWUr0CVlCBc%3D&amp;attredirects=0" alt="alt text" title="15 random teams"></p>
+
+<p>Next, we modeled the current worst performing team in the NBA (76ers)'s 15 games:
+<img src="https://7c0a817f-a-ed83d6ea-s-sites.googlegroups.com/a/college.harvard.edu/seatgeekcs109/performance/download%20%285%29.png?attachauth=ANoY7cpatkfMiWChH47S_B-os6DEaSF-_qrpwZsyJtZTdp8f_5Gb1twYgB1ORMf0CAAOKb87t9nPQt0vCkt9rm3gwnDvv23HztmFSlSuBzORbHk1G07guUVxstkZmlCozNGicDGbbcLpMiSzKumX7Z693OVSQX84nfEP5KEoqvnfH5kTc9_xkv0StqqeVvheUWM4Ni3HaoBrM1ZoLnL--s51iCcWhbDEdrSh-dDfgjXafoiUS2FKjTzGP9bNldZoPhk99MMquweP&amp;attredirects=0" alt="alt text" title="Worst Team"></p>
+
+<p>Next, we modeled the current best performing team in the NBA (Warriors)'s 15 games:
+ <img src="https://sites.google.com/a/college.harvard.edu/seatgeekcs109/_/rsrc/1449719067487/performance/download%20%284%29.png" alt="alt text" title="Best Team"></p>
+
+<p>Finally, we compared MAD across lasso regression predicting today and next week's ticket price against the baseline. The lasso regression predicting next week's price was slightly better than the baseline model. 
+ <img src="https://sites.google.com/a/college.harvard.edu/seatgeekcs109/_/rsrc/1449718149426/performance/download%20%281%29.png" alt="alt text" title="Days Away Predictions"></p>
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/CS109JohnCena/Seatgeek">Seatgeek.GitHub.io</a> is maintained by <a href="https://github.com/CS109JohnCena">CS109JohnCena</a>.</span>
 
