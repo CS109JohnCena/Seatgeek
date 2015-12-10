@@ -54,7 +54,7 @@
 <li>Using today's information, can we predict the ticket price a week from now?</li>
 </ul>
 
-<p>These are the questions we attempted to answer through our data science process, using some familiar algorithms (eg. ridge, lasso regression, elastic net) in an effort to predict the ticket price change. Due to the limit of the API, we were forced to predice the "lowest good deal price": lowest ticket price for a seat SeatGeek determines a "good deal". The average metric could be skewed by a very expensive courtside ticket, and the cheapest ticket could might offer a very disappointing view of the game.</p>
+<p>These are the questions we attempted to answer through our data science process, using some familiar algorithms (eg. ridge, lasso regression, elastic net) in an effort to predict the ticket price change. Due to the limit of the API, we were forced to predict the "lowest good deal price": lowest ticket price for a seat SeatGeek determines a "good deal". The average metric could be skewed by a very expensive courtside ticket, and the cheapest ticket could might offer a very disappointing view of the game.</p>
 
 <h3>
 <a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation:</h3>
@@ -90,10 +90,13 @@ If you were no longer able to make the concert/sports game due to an exam, work,
 <h5>
 <a id="todays-price" class="anchor" href="#todays-price" aria-hidden="true"><span class="octicon octicon-link"></span></a>Today's Price</h5>
 
-<p>We tested our prediction with 4 different models (OLS, Ridge, Lasso, and Elastic Net) on 3 different combinations of parameters. We ran cross-validation to determine Lasso with only the relevant parameters produced the highest accuracy. We look at MSEs(Mean Squared Errors) and MADs(Mean Absolute Derivations) between predicted and actual ticket prices to determine determine the performance of the model.
-<img src="https://lh3.googleusercontent.com/doiPFH_2PJDCXsalh94L0xNHgWPrHLPJYFg2bGN7Jiu1jUBdZVyxskQdwscbFf42wYSHujFfY1V3QZO6p9KBnbn5Gj84o0YTEuymTHsEEh0bgyoha_PhND7IlIDp7s1tntFpgMAJ" alt="alt text" title="Today MSE">
-The lasso regression with intuitive explanatory variables is the best model to predict the price because it has the smallest MSE.
-<img src="https://lh5.googleusercontent.com/bbLkzyImlgt6iUZX7FyNmgjqkrYdbdVw3j82lWWSPya0OsvFmHhakkBZK_xrzLpJcIABoNNe9NY_FBIDhqIF-aumGPnbNfrdv7lfYKDVd9NcQaoxOvtUY1LSrT1OVcbul9mWf6TH" alt="alt text" title="Today MAD">
+<p>We tested our prediction with 4 different models (OLS, Ridge, Lasso, and Elastic Net) on 3 different combinations of parameters. We ran cross-validation to determine Lasso with only the relevant parameters produced the highest accuracy. We look at MSEs(Mean Squared Errors) and MADs(Mean Absolute Derivations) between predicted and actual ticket prices to determine determine the performance of the model.</p>
+
+<p><img src="https://lh3.googleusercontent.com/doiPFH_2PJDCXsalh94L0xNHgWPrHLPJYFg2bGN7Jiu1jUBdZVyxskQdwscbFf42wYSHujFfY1V3QZO6p9KBnbn5Gj84o0YTEuymTHsEEh0bgyoha_PhND7IlIDp7s1tntFpgMAJ" alt="alt text" title="Today MSE"></p>
+
+<p>The lasso regression with intuitive explanatory variables is the best model to predict the price because it has the smallest MSE.</p>
+
+<p><img src="https://lh5.googleusercontent.com/bbLkzyImlgt6iUZX7FyNmgjqkrYdbdVw3j82lWWSPya0OsvFmHhakkBZK_xrzLpJcIABoNNe9NY_FBIDhqIF-aumGPnbNfrdv7lfYKDVd9NcQaoxOvtUY1LSrT1OVcbul9mWf6TH" alt="alt text" title="Today MAD">
 The lasso regression with intuitive explanatory variables is the best model to predict the price because it has the smallest MAD.</p>
 
 <p>We then validated the Best Predictive Model on the Validation Set to Determine Unbiased Prediction Error.</p>
@@ -125,10 +128,10 @@ The lasso regression with intuitive explanatory variables is the best model to p
 <h4>
 <a id="next-weeks-price" class="anchor" href="#next-weeks-price" aria-hidden="true"><span class="octicon octicon-link"></span></a>Next Week's Price</h4>
 
-<p>A week is long enough for a ticket to significantly change in price. We are comapring the data from 11/29/2015 and 12/06/2015. We regress the price in a week on various predictors, similar to the step above. 
+<p>A week is long enough for a ticket to significantly change in price. We are comparing the data from 11/29/2015 and 12/06/2015. We regress the price in a week on various predictors, similar to the step above. 
 <img src="https://lh4.googleusercontent.com/lANRB175XI5a0u7xJZKBqZ7LL15yn9VN-CRB67xlQEEi5Wp17WaJbYbMMY_aW_K2k1TWIeaT0fYOAfHqbuZjwnAhbJ7IKzYbNqpZ89pF2RTrbq3G0kSC5TMuNp-NVEKxoGBZtamF" alt="alt text" title="Next Week MSE">
 <img src="https://lh6.googleusercontent.com/w1TmDypc59vC7l89-qseDhAdBh9zTSl6eeNBglhnS_W2zOgN9m_hCNXQLTBlB3AhYxvtXCGxZQadeE5OdZMqSFjzrGH_7JSCAMq7YpzGhwJ7gqM_TvuA1BmtawausP69vFjaqocY" alt="alt text" title="Next Week MAD">
-The Elastic Net and Lasso Regression with intuitive explanatory variables perform very well. We decided to use both of them to determine the true prediction accuracy.From these graphs, the intuitive model with ridge regression is the best model to predict the ticket price. 
+The Elastic Net and Lasso Regression with intuitive explanatory variables perform very well. We decided to use both of them to determine the true prediction accuracy. 
 We then validated the Best Predictive Model on the Validation Set to Determine Unbiased Prediction Error.</p>
 
 <table>
