@@ -43,9 +43,9 @@
 <h3>
 <a id="project-overview" class="anchor" href="#project-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Overview:</h3>
 
-<p>Ticket prices are very volatile. The ticket themselves are priced based on supply and demand. Thus, without a sure way to price the tickets, the tickets are priced arbitrarily, and it's either priced higher or lower than the market demand. Thus, there is a deadweight loss associated with the trade of ticket prices. We see this happen a lot on third-party ticket website like Stubhub or SeatGeek.</p>
+<p>The ticket themselves are priced based on unknown demand, so the tickets are very volatile. Thus, there is a deadweight loss associated with the trade of ticket prices. We see this happen a lot on third-party ticket website like Stubhub or SeatGeek.</p>
 
-<p>With this project, we attempted to gather, explore, and exploit ticket prices posted on Seatgeek.com and their relationship to sports data. SeatGeek is 3rd party website for tickets - users are able to buy/sell tickets for any sports/concerts.</p>
+<p>With this project, we attempted to gather and explore the ticket prices posted on Seatgeek.com and their relationship to NBA data. SeatGeek is 3rd party website for tickets - users are able to buy/sell tickets for any sports/concerts.</p>
 
 <p>Thus, we wanted to look at how different factors affect the ticket pricing.</p>
 
@@ -54,20 +54,71 @@
 <li>Using today's information, can we predict the ticket price a week from now?</li>
 </ul>
 
-<p>We looked at NBA which is currently in season at the time of the project. We used SeatGeek's API to pull information about an basketball game's ticket information. Next, we scraped relevant sports data (i.e. ranking, winning percentage) from ESPN. These are the questions we attempted to answer through our data science process, using some familiar algorithms (eg. ridge, lasso regression, linear SVM regression) in an effort to predict the ticket price change.</p>
+<p>These are the questions we attempted to answer through our data science process, using some familiar algorithms (eg. ridge, lasso regression, elastic net) in an effort to predict the ticket price change. Due to the limit of the API, we were forced to predice the "lowest good deal price": lowest ticket price for a seat SeatGeek determines a "good deal". The average metric could be skewed by a very expensive courtside ticket, and the cheapest ticket could might offer a very disappointing view of the game.</p>
 
 <h3>
 <a id="motivation" class="anchor" href="#motivation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivation:</h3>
 
-<p>During the summer, Bryan did a case study on Boston's AceTickets. Event tickets are interesting to study among other commodities. First, it loses its value after the time of the event has passed. Thus, the ticket price changes quite dramatically depending on how close the ticket is from the event time. Next, many different factors affect the price. Because of limited quantity of tickets for a given event, the price is heavily influenced by its demand. The demand can be influenced by many different factors. One would pay higher to watch a really good team, or one would pay more to watch a famous sport star like Kobe Bryant before he retires in 2016 even if his team is performing very poorly. In addition, one would treat a basketball ticket differently if the game was on a weekend or holiday vs Monday or Tuesday night. We saw this a lot on the social media. For example, a friend would no longer able to make the concert/sports game due to an exam, work, or illness and would sell off the ticket on the social media page. How does she determine at what price she should sell, and is the buyer committed to buy at that price? Thus, we found this problem to interesting to study and wanted to dive deep into the process work to study this phenomenon. 
-Related Work:</p>
-
-<p>Websites like Kayak and Seatgeek try to educate the consumers by displaying a "good deal" chart for airplane tickets and event tickets, respectively. The data scientists at these places conduct their own analogy (<a href="http://chairnerd.seatgeek.com/the-math-behind-ticket-bargains/">http://chairnerd.seatgeek.com/the-math-behind-ticket-bargains/</a>). Unfortunately, the general public does not have the access to the API that looks at individual tickets and seating.  While their strategy is useful, we wanted to follow an adopted strategy to answer the similar question but using different approach (using general linear regressions). </p>
+<p>Event tickets are interesting to study among other commodities. First, it loses its value after the time of the event has passed. Next, many different factors affect its price. The demand can be influenced by many different factors such as number of top stars or the team's winning percentage. In addition, one would treat a basketball ticket differently on when the team plays. 
+If you were no longer able to make the concert/sports game due to an exam, work, or illness, how would you determine at what price to sell? Is the buyer committed to buy at that price? Thus, we found this problem to interesting to study and wanted to dive deep into the process work to study this phenomenon. </p>
 
 <h3>
-<a id="initial-questions" class="anchor" href="#initial-questions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initial Questions:</h3>
+<a id="data-cleaning" class="anchor" href="#data-cleaning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Cleaning</h3>
 
-<p>We initially tried to answer how ticket prices evolve over time depending on team performance and seat information factors. First, we tried to use Stubhub.com's data because it is a more prominent 3rd party ticket website. However, Stubhub API only gave the public a limited number of requests, and we were eventually timed out. We decided to use more user-friendly SeatGeek's API. Unfortunately, due to the API policy, we were not able to scrape the information about individual tickets. The open API only shows you a general ticket information. Thus, you only see the lowest, lowest good, average, and highest ticket price of an event, and no information about whether this specific seat is being sold or not. The lowest good ticket price refers to the cheapest ticket that SeatGeek algorithm deems it's a good deal. Highest ticket price was deemed too volatile, and the average ticket price would be subject to too much variation; it would have confounding effect from the distribution for the ticket prices that we can not account for. The lowest ticket price has a problem as well; it might show you the most undesirable ticket such as standing ticket or a seat with a blocked/poor view. Thus, we rephrased our original question to answer how different factors affect the lowest good deal ticket price. The factors include ticket information from SeatGeek: location/venue, number of tickets, date of the game, number of days away from the game. We chose to ignore SeatGeek's assigned score on the venues and home/away teams because they were calculated in black-box setting, and we don't know their method of derivation. We also looked at sports data: the number of highly-paid stars/winning percentage/winning streak of home and away teams, its current rank in the NBA. We looked at the percentage of attendance data on the respective teams playing; higher percentage would mean that their team has a lot of attendees.</p>
+<p>We collected those information and extensively cleaned the data to merge them into one big data frame based on keys. We were able to collect data of more than 7 days. There are about 6000 different ticket information available. </p>
+
+<h3>
+<a id="initial-data-exploration" class="anchor" href="#initial-data-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initial Data Exploration</h3>
+
+<p>We were initially very curious to see explore the following visualizations and questions:</p>
+
+<ul>
+<li>How do lowest_price_good change over time?</li>
+<li>How does the price of tickets change in relative to the Team's NBA Ranking/Winning Percentage?</li>
+<li>How do different factors (sports rating, attendance, salary, other ticket info) affect the ticket price?</li>
+</ul>
+
+<p>We wanted to see how individual factors might affect the lowest "good deal" ticket price over time. We looked at how factors like holidays such as Christmas and New Years (shown by vertical red lines), weekends (red shaded regions), the away team's rank (red) and winning percentage (green) affect the ticket price (blue). </p>
+
+<p><img src="https://7c0a817f-a-ed83d6ea-s-sites.googlegroups.com/a/college.harvard.edu/seatgeekcs109/dataset-1/morning%20chart.png?attachauth=ANoY7coLW-cG_epyvftyre4F8lubbNjrRTtCYQnKhhbhAb2sEnEJboGfgBn4-7n_Vz7McNqS0tuCWu3AZsK6hTCykLRBBVZ6dy9pBH3GF-InE_DDPuXHIrtyNkKvgRQMwwfyGSV6G7IYf24hiczKxUuOkcKwx_qOjz3vvItHUHWnVaoMHIM35imogYeru5CmHbqrrIhkaxs1ZarvVV4THr5U2sOG0SX5z1A7tSba3BSOVzgAaVL08os%3D&amp;attredirects=0" alt="alt text" title="Per Team Analysis"></p>
+
+<p>The effect of holidays (i.e. Christmas) and weekend is accented for a high performing team like the Warriors. Also, the effect of star players is shown, for example, in Lakers: people want to see Kobe Bryant, a NBA legend, play before he retires this season. So, the end of the season sees a huge spike in ticket price. Finally, when you look at Portland Trail Blazers, you see that rank and ticket price are highly correlated before Jan 30. Then, the ticket prices and <strong>winning percentage</strong> are highly correlated. We applied similar techniques to determine which factors were relevant to the model and which relationship is best appropriate to represent them in the model. </p>
+
+<h3>
+<a id="method" class="anchor" href="#method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method</h3>
+
+<h5>
+<a id="todays-price" class="anchor" href="#todays-price" aria-hidden="true"><span class="octicon octicon-link"></span></a>Today's Price</h5>
+
+<p>We tested our prediction with 4 different models (OLS, Ridge, Lasso, and Elastic Net) on 3 different combinations of parameters. We ran cross-validation to determine Lasso with only the relevant parameters produced the highest accuracy. We look at MSEs(Mean Squared Errors) and MADs(Mean Absolute Derivations) between predicted and actual ticket prices to determine determine the performance of the model.
+<img src="https://lh3.googleusercontent.com/doiPFH_2PJDCXsalh94L0xNHgWPrHLPJYFg2bGN7Jiu1jUBdZVyxskQdwscbFf42wYSHujFfY1V3QZO6p9KBnbn5Gj84o0YTEuymTHsEEh0bgyoha_PhND7IlIDp7s1tntFpgMAJ" alt="alt text" title="Today MSE">
+The lasso regression with intuitive explanatory variables is the best model to predict the price because it has the smallest MSE.
+<img src="https://lh5.googleusercontent.com/bbLkzyImlgt6iUZX7FyNmgjqkrYdbdVw3j82lWWSPya0OsvFmHhakkBZK_xrzLpJcIABoNNe9NY_FBIDhqIF-aumGPnbNfrdv7lfYKDVd9NcQaoxOvtUY1LSrT1OVcbul9mWf6TH" alt="alt text" title="Today MAD">
+The lasso regression with intuitive explanatory variables is the best model to predict the price because it has the smallest MAD.</p>
+
+<p>We then validated the Best Predictive Model on the Validation Set to Determine Unbiased Prediction Error.
+</p>
+|   | Best Model Accuracy   | Baseline Accuracy     |
+|:----: |:-------------------:  |:-----------------:    |
+| RMSE  | 7.31  | 10.41     |
+| MAD   | 3.80  | 3.94  |
+
+The improvement with our model is shown in the decrease in RMSE.
+
+<h4>
+<a id="next-weeks-price" class="anchor" href="#next-weeks-price" aria-hidden="true"><span class="octicon octicon-link"></span></a>Next Week's Price</h4>
+
+<p>A week is long enough for a ticket to significantly change in price. We are comapring the data from 11/29/2015 and 12/06/2015. We regress the price in a week on various predictors, similar to the step above. 
+<img src="https://lh4.googleusercontent.com/lANRB175XI5a0u7xJZKBqZ7LL15yn9VN-CRB67xlQEEi5Wp17WaJbYbMMY_aW_K2k1TWIeaT0fYOAfHqbuZjwnAhbJ7IKzYbNqpZ89pF2RTrbq3G0kSC5TMuNp-NVEKxoGBZtamF" alt="alt text" title="Next Week MSE">
+<img src="https://lh6.googleusercontent.com/w1TmDypc59vC7l89-qseDhAdBh9zTSl6eeNBglhnS_W2zOgN9m_hCNXQLTBlB3AhYxvtXCGxZQadeE5OdZMqSFjzrGH_7JSCAMq7YpzGhwJ7gqM_TvuA1BmtawausP69vFjaqocY" alt="alt text" title="Next Week MAD">
+The Elastic Net and Lasso Regression with intuitive explanatory variables perform very well. We decided to use both of them to determine the true prediction accuracy.From these graphs, the intuitive model with ridge regression is the best model to predict the ticket price. 
+We then validated the Best Predictive Model on the Validation Set to Determine Unbiased Prediction Error.
+</p>
+|   | Elastic Net Accuracy      | Lasso Accuracy    |
+|:----: |:-------------------:  |:-----------------:    |
+| RMSE  | 13.49     | 13.46     |
+| MAD   | 7.56  | 7.56  |
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/CS109JohnCena/Seatgeek">Seatgeek.GitHub.io</a> is maintained by <a href="https://github.com/CS109JohnCena">CS109JohnCena</a>.</span>
