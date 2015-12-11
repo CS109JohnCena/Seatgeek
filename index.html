@@ -80,21 +80,7 @@
 
 <p>We wanted to see how individual factors might affect the lowest "good deal" ticket price over time. We looked at how factors like holidays such as Christmas and New Years (shown by vertical red lines), weekends (red shaded regions), the away team's rank (red) and winning percentage (green) affect the ticket price (blue). </p>
 
-<p><img src="https://photos-2.dropbox.com/t/2/AADb5nr4snNG_gtNgWvNDMkSQFybuCrYf7zGaZ4DQgLC7w/12/113402027/png/32x32/3/1449813600/0/2/graph9.png/EOnwxlcYvuoBIAIoAg/xOG-4L_UjyWGy4CAMUvZeFwwQI0YB892fohbpnJfzkY?size_mode=3&amp;size=1024x768" alt="alt text" title="Per Team Analysis"></p>
-
-<p><img src="Seatgeek/Images/graph1.png" alt="alt text" title="Graph 1"></p>
-
-<p><img src="SeatgeekImagesgraph1.png" alt="alt text" title="Graph 1"></p>
-
-<p><img src="Images/graph1.png" alt="alt text" title="Graph 1"></p>
-
-<p>
-<img src="./Images/graph1.png" align="middle">
-
-<img src="/Seatgeek/Images/graph1.png" align="middle">
-
-<img src="graph1.png" align="middle">
-</p>
+<p><img src="https://photos-3.dropbox.com/t/2/AAAX3Z7uCSZWO0Qip2arcCVZYhoG1b2bhC8iakkeq3sWkw/12/113402027/png/32x32/1/_/1/2/graph1.png/EOnwxlcYvuoBIAIoAg/6EuYc5pmncUphmLVHXbejTyMwY5DD4Gr1deS60o3pYo?size=1024x768&amp;size_mode=3" alt="alt text" title="Per Team Analysis"></p>
 
 <p>The effect of holidays (i.e. Christmas) and weekend is accented for a high performing team like the Warriors. Also, the effect of star players is shown, for example, in Lakers: people want to see Kobe Bryant, a NBA legend, play before he retires this season. So, the end of the season sees a huge spike in ticket price. Finally, when you look at Portland Trail Blazers, you see that rank and ticket price are highly correlated before Jan 30. Therefore, the ticket prices and <strong>winning percentage</strong> are highly correlated. We applied similar techniques to determine which factors were relevant to the model and which relationship is best appropriate to represent them in the model. </p>
 
@@ -108,11 +94,11 @@
 
 <p>We tested our prediction with 4 different models (OLS, Ridge, Lasso, and Elastic Net) on 3 different combinations of parameters. We ran a cross-validation to determine Lasso with only the relevant parameters produced the highest accuracy. We look at MSEs (Mean Squared Errors) and MADs (Mean Absolute Derivations) between predicted and actual ticket prices to determine the performance of the model.</p>
 
-<p><img src="https://lh3.googleusercontent.com/doiPFH_2PJDCXsalh94L0xNHgWPrHLPJYFg2bGN7Jiu1jUBdZVyxskQdwscbFf42wYSHujFfY1V3QZO6p9KBnbn5Gj84o0YTEuymTHsEEh0bgyoha_PhND7IlIDp7s1tntFpgMAJ" alt="alt text" title="Today MSE"></p>
+<p><img src="https://photos-6.dropbox.com/t/2/AADR3G4gT0YCjaeS7WervGbP5XIYPvcZUtG0iKqe92TN-A/12/113402027/png/32x32/1/_/1/2/graph2.png/EOnwxlcYvuoBIAIoAg/WEBohbXfwnu63eOzP5-Ei4xARORsGS7VER6iexUIVOs?size=1024x768&amp;size_mode=3" alt="alt text" title="Today MSE"></p>
 
 <p>The lasso regression with intuitive explanatory variables is the best of these models to predict the price because it has the smallest MSE.</p>
 
-<p><img src="https://lh5.googleusercontent.com/bbLkzyImlgt6iUZX7FyNmgjqkrYdbdVw3j82lWWSPya0OsvFmHhakkBZK_xrzLpJcIABoNNe9NY_FBIDhqIF-aumGPnbNfrdv7lfYKDVd9NcQaoxOvtUY1LSrT1OVcbul9mWf6TH" alt="alt text" title="Today MAD"></p>
+<p><img src="https://dl.dropboxusercontent.com/content_link/2q2VjjUTm2vj9xFGINM3Ob1xDTE5AOuEXFDUwQyIPlUL2K70MavvX900Ep28BQ6u/file" alt="alt text" title="Today MAD"></p>
 
 <p>The lasso regression with intuitive explanatory variables is the best of these models to predict the price because it has the smallest MAD.
 We then test the Best Predictive Model on the Test Set to Determine Unbiased Prediction Error.</p>
@@ -146,9 +132,9 @@ We then test the Best Predictive Model on the Test Set to Determine Unbiased Pre
 
 <p>Next, we ran a regression on today’s price with the intention of using that for future predictions in a unique way.</p>
 
-<p><img src="https://lh4.googleusercontent.com/lANRB175XI5a0u7xJZKBqZ7LL15yn9VN-CRB67xlQEEi5Wp17WaJbYbMMY_aW_K2k1TWIeaT0fYOAfHqbuZjwnAhbJ7IKzYbNqpZ89pF2RTrbq3G0kSC5TMuNp-NVEKxoGBZtamF" alt="alt text" title="Next Week MSE"></p>
+<p><img src="https://dl.dropboxusercontent.com/content_link/a0IPZDrPwNW8AGyloY1RZpqWLIHtIwb9OATC2p3LOsuTOFL20gIyuV3VdZEOX3GQ/file" alt="alt text" title="Next Week MSE"></p>
 
-<p><img src="https://lh6.googleusercontent.com/w1TmDypc59vC7l89-qseDhAdBh9zTSl6eeNBglhnS_W2zOgN9m_hCNXQLTBlB3AhYxvtXCGxZQadeE5OdZMqSFjzrGH_7JSCAMq7YpzGhwJ7gqM_TvuA1BmtawausP69vFjaqocY" alt="alt text" title="Next Week MAD"></p>
+<p><img src="https://dl.dropboxusercontent.com/content_link/ulmoXLVReWymg4qmIOAWyWQpIYqJmI0XJN4zGW0pTdSEaXZaM4MdlcbUhaAFu8p8/file" alt="alt text" title="Next Week MAD"></p>
 
 <p>The Elastic Net and Lasso Regression with intuitive explanatory variables perform best. We decided to use both of them to determine the true prediction accuracy. </p>
 
@@ -183,19 +169,19 @@ We then test the Best Predictive Model on the Test Set to Determine Unbiased Pre
 
 <p>First, we modeled price over number of days away from game day for 15 random games: </p>
 
-<p><img src="https://7c0a817f-a-ed83d6ea-s-sites.googlegroups.com/a/college.harvard.edu/seatgeekcs109/performance/download.png?attachauth=ANoY7cowo0XCIgL22VjpBH3_sJt-fMmo7RTRsXOcaDpu7HW5D8kjgbhwxWxnkWm3MVW9q67eFLgNuhyPQg5lIuxrT4-RIeFYML3CM2RLynqfZnqB4hX5e8hs17xw9TiMZWkAzvARNbRJriKOIx76fUE_0OR2phUCiN5V7hyhC47o2TdtH7m3P6LcXtOk-YJIfcNe7rMmThMYE2GHS_BKjQ7G6rX-Kg6vaqEretcRWD5LsWUr0CVlCBc%3D&amp;attredirects=0" alt="alt text" title="15 random teams"></p>
+<p><img src="https://photos-2.dropbox.com/t/2/AADKxyEkZW0PvbmvbPLAim_X3QWXHnMDZMBgzYHp9gm3sQ/12/113402027/png/32x32/1/_/1/2/graph6.png/EOnwxlcYvuoBIAIoAg/n0LO38YdS8tpe7nTSDRJrio9B4T0VKwgQ1ccwqz1tFY?size=1024x768&amp;size_mode=3" alt="alt text" title="15 random teams"></p>
 
 <p>Next, we modeled the price over number of days away from game day for the current worst performing team in the NBA (76ers)'s 15 games: </p>
 
-<p><img src="https://7c0a817f-a-ed83d6ea-s-sites.googlegroups.com/a/college.harvard.edu/seatgeekcs109/performance/download%20%285%29.png?attachauth=ANoY7cpatkfMiWChH47S_B-os6DEaSF-_qrpwZsyJtZTdp8f_5Gb1twYgB1ORMf0CAAOKb87t9nPQt0vCkt9rm3gwnDvv23HztmFSlSuBzORbHk1G07guUVxstkZmlCozNGicDGbbcLpMiSzKumX7Z693OVSQX84nfEP5KEoqvnfH5kTc9_xkv0StqqeVvheUWM4Ni3HaoBrM1ZoLnL--s51iCcWhbDEdrSh-dDfgjXafoiUS2FKjTzGP9bNldZoPhk99MMquweP&amp;attredirects=0" alt="alt text" title="Worst Team"></p>
+<p><img src="https://dl.dropboxusercontent.com/content_link/NMRtNCESthKc84tba3lhvNG2oRSFNTjLWI0p8lAKvq1WMpgfePdbrL9CUc5Ep8FZ/file" alt="alt text" title="Worst Team"></p>
 
 <p>Next, we modeled the price over number of days away from game day for the current best performing team in the NBA (Warriors)'s 15 games: </p>
 
-<p><img src="https://sites.google.com/a/college.harvard.edu/seatgeekcs109/_/rsrc/1449719067487/performance/download%20%284%29.png" alt="alt text" title="Best Team"></p>
+<p><img src="https://photos-1.dropbox.com/t/2/AAAtJg0aLByzA4aRT7KPRL0fanL34uR_V8F8-5qE6KzYBQ/12/113402027/png/32x32/1/_/1/2/graph8.png/EOnwxlcYvuoBIAIoAg/5XuTo-isBSS2asTAXAvhXMr5LjG7WqP7eaTTMdlvWM0?size=1024x768&amp;size_mode=3" alt="alt text" title="Best Team"></p>
 
 <p>Finally, we compared the use of the model of today’s price for prediction (“LassoTodayModel”) and the model of next week's ticket price (“LassoWeekModel”) against a baseline (“Baseline”) of using today’s price as a forecast. Only the lasso regression for next week's price was slightly better than the baseline model, but using the lasso regression for today’s for prediction is still useful – it can be used to make forecasts over any time horizon. </p>
 
-<p><img src="https://sites.google.com/a/college.harvard.edu/seatgeekcs109/_/rsrc/1449718149426/performance/download%20%281%29.png" alt="alt text" title="Days Away Predictions"></p>
+<p><img src="https://photos-2.dropbox.com/t/2/AAAz-aMQA7PB4FXwg6OWABWi2UTiBmBkLkLEYn5TvRwbjg/12/113402027/png/32x32/1/_/1/2/graph9.png/EOnwxlcYvuoBIAIoAg/xOG-4L_UjyWGy4CAMUvZeFwwQI0YB892fohbpnJfzkY?size=1024x768&amp;size_mode=3" alt="alt text" title="Days Away Predictions"></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/CS109JohnCena/Seatgeek">Seatgeek.GitHub.io</a> is maintained by <a href="https://github.com/CS109JohnCena">CS109JohnCena</a>.</span>
